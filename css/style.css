@@ -1,0 +1,92 @@
+
+.rps-animated {
+  width: auto;
+  height: 200px;
+  z-index: 2;
+  position: absolute;
+  top: 111px;
+  margin: auto;
+}
+.rps-left {
+  right: 100%;
+}
+.rps-right {
+  left: 100%;
+}
+/*player greeting*/
+.player-greeting {
+  font-size: 1.5em;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: #fffcfc;
+}
+/*info well*/
+.info-well {
+  min-height: 295px;
+}
+.info-well > p{
+  font-size: 2em;
+  position: relative;
+  top: 85px;
+}
+/*Player panels*/
+.playerOne-panel,.playerTwo-panel {
+  min-height: 200px;
+}
+
+.rps {
+  margin: 33px 2%;
+  font-size: 2em;
+  z-index: 3;
+}
+.rps-choice {
+  font-size: 3em;
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.msg-player {
+  color: #fff;
+  background-color: rgba(3,169,244,0.5);
+}
+.msg-opponent, .msg-player,.msg-disconnect {
+  font-size: 1.5em;
+  text-align: left;
+  margin: 0px;
+}
+.msg-opponent {
+  color: #fff;
+  background-color: rgba(255,0,0,0.54);
+}
+.msg-disconnect {
+  color: #fff;
+  background-color: rgba(0,0,0,0.46);
+}
+/*footer*/
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+}
+.copyright {
+  color: #888;
+  font-family: Verdana, Geneva, sans-serif;
+  position: relative;
+  top: 2px;
+  font-size: 15px;
+}
+/*responsive*/
+@media screen and (max-width: 991px) {
+  .rps {
+    margin: 33px 7%;
+  }
+}

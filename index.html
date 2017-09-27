@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor Game</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1>A Two-player Rock Paper Scissor Game!</h1>
+        </div>
+      </div>
+
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <div class="callout">
+            <h4>To begin the game, create a player name and then click on your choice of weapon!</h4>
+            <div class="grid-x grid-padding-x">
+            </div>
+            <div class="grid-x grid-padding-x">
+              <div class="large-4 medium-4 medium-pull-2 cell">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form>
+
+          <div class="large-12 cell">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <label for="username" class="">Username:</label>
+                <input class="form-control" type="text" id="username" placeholder="username..">
+                <input class="user-submit" type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
+
+          <!-- Player 1 panel -->
+          <div class="row top-buffer">
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading playerOne-name">
+                Player 1:
+                  <span>Waiting For Player</span>
+                </div>
+                <div class="panel-body playerOne-panel"></div>
+                <div class="panel-footer">
+                  <p>Wins: <span id="p1-wins">0</span> Losses: <span id="p1-losses">0</span></p>
+                </div>
+              </div>
+            </div><!-- ./Player 1 panel -->
+
+            <!-- Status Well -->
+            <div class="col-md-4">
+              <div class="well info-well">
+                <p>Loading...</p>
+              </div>
+            </div><!-- ./Status Well -->
+            <!-- Player 2 Panel -->
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading playerTwo-name">
+                Player 2:
+                  <span>Waiting For Player</span>
+                </div>
+                <div class="panel-body playerTwo-panel"></div>
+                <div class="panel-footer">
+                  <p>Wins: <span id="p2-wins">0</span> Losses: <span id="p2-losses">0</span></p>
+                </div>
+              </div>
+            </div><!-- ./Player 2 Panel -->
+
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 cell">
+            <label>Select an insult for your opponent!</label>
+            <select>
+              <option value="weaksauce">Weaksauce!</option>
+              <option value="going-down">You're Going Down!</option>
+              <option value="eat-dirt">Eat dirt!</option>
+              <option value="coming-for-you">I'm coming for you!</option>
+            </select>
+            <div id="chat-box"></div>
+            <form class="input-group">
+              <input id="chat-input" type="text" class="form-control" placeholder="Or type some smack!">
+              <span class="input-group-btn">
+              <input id="chat-submit" class="btn btn-default" type="submit" value="Submit"></input>
+              </span>
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 cell">
+          <h5>Player 2</h5>
+          <!-- Grid Example -->
+
+          <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <div class="primary callout" class="playerTwo-name">
+                <p><strong>Waiting for Player 2</p>
+              </div>
+            </div>
+
+            <!-- footer -->
+            <div class="push"></div>
+          </div><!-- /.wrapper -->
+          <div class="footer text-center">
+            <span class="copyright">
+              &copy Michelle Hamdani 2017
+            </span>
+          </div><!-- /.footer -->
+
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <!-- jquery cdn -->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- firebase cdn -->
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <!-- local javascript file -->
+      <script type="text/javascript" src="js/script.js"></script>
+
+  </body>
+</html>
