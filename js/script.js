@@ -1,4 +1,3 @@
-
 $( document ).ready(function() {
 
 
@@ -48,22 +47,21 @@ $( document ).ready(function() {
         $('.playerTwo-name > span').text(playerName);
       }
     },
-    // show rock paper scissor options
+    // show pokemon options
     displayRps: function(isPlayerOne){
-      var imgDirection = isPlayerOne ? '.gif' : '.gif';
-      var $rock = $('<img>').addClass('rps').text('Rock').attr('data-rps','rock')
-        .attr('src','assets/images/rock-'+imgDirection).attr('height','100');
-      var $paper = $('<img>').addClass('rps').text('Paper').attr('data-rps','paper')
-        .attr('src','assets/images/paper-'+imgDirection).attr('height','100');
-      var $scissor = $('<img>').addClass('rps').text('Scissor').attr('data-rps','scissor')
-        .attr('src','assets/images/scissor-'+imgDirection).attr('height','100');
-      var $choices = $('<div>').append($rock,$paper,$scissor);
+      var $charmander = $('<img>').addClass('rps').text('charmander').attr('data-rps','charmander')
+        .attr('src','assets/images/charmander.gif').attr('height','100');
+      var $squirtle = $('<img>').addClass('rps').text('squirtle').attr('data-rps','squirtle')
+        .attr('src','assets/images/squirtle.gif').attr('height','100');
+      var $pikachu = $('<img>').addClass('rps').text('pikachu').attr('data-rps','pikachu')
+        .attr('src','assets/images/pikachu.gif').attr('height','100');
+      var $choices = $('<div>').append($charmander,$squirtle,$pikachu);
       if (isPlayerOne) {
         $('.playerOne-panel').html($choices);
       } else {
         $('.playerTwo-panel').html($choices);
       }
-      $('.info-well > p').html($('<p>').text('Rock, Paper or Scissor?'));
+      $('.info-well > p').html($('<p>').text('charmander, squirtle or pikachu?'));
     },
     // Determine winner
     getWinner: function(isPlayerOne){
@@ -73,12 +71,12 @@ $( document ).ready(function() {
       console.log('p2 choice', p2.choice);
       var playerOneWins;
       // RPS logic
-      if (p1.choice == 'rock'){
-            if (p2.choice == 'paper'){
+      if (p1.choice == 'charmander'){
+            if (p2.choice == 'squirtle'){
                 playerOneWins = false;
                 p1.losses++;
                 p2.wins++;
-            } else if (p2.choice == 'scissor'){
+            } else if (p2.choice == 'pikachu'){
                 playerOneWins = true;
                 p1.wins++;
                 p2.losses++;
@@ -86,12 +84,12 @@ $( document ).ready(function() {
               $('.info-well > p').text("Tie!");
             }
       }
-      if (p1.choice == 'paper'){
-          if (p2.choice == 'scissor'){
+      if (p1.choice == 'squirtle'){
+          if (p2.choice == 'pikachu'){
               playerOneWins = false;
               p1.losses++;
               p2.wins++;
-          } else if (p2.choice == 'rock'){
+          } else if (p2.choice == 'charmander'){
               playerOneWins = true;
               p1.wins++;
               p2.losses++;
@@ -99,12 +97,12 @@ $( document ).ready(function() {
             $('.info-well > p').text("Tie!");
           }
       }
-      if (p1.choice == 'scissor'){
-          if (p2.choice == 'rock'){
+      if (p1.choice == 'pikachu'){
+          if (p2.choice == 'charmander'){
               playerOneWins = false;
               p1.losses++;
               p2.wins++;
-          } else if (p2.choice == 'paper'){
+          } else if (p2.choice == 'squirtle'){
               playerOneWins = true;
               p1.wins++;
               p2.losses++;
@@ -141,21 +139,21 @@ $( document ).ready(function() {
         $('.'+opponent+'-panel').empty();
       }, 5000);
     },
-    // animate rock paper scissor and black-bar
+    // animate pokemon
     animateRPS: function(){
       $(".black-bar").animate({
         opacity: 1
       }, 500, function() {
         console.log('p1 choice',game.playerOne.choice);
         console.log('p2 choice',game.playerOne.choice);
-        $('#'+game.playerTwo.choice+'-right').animate({left: '50%'}, 500);
-        $('#'+game.playerOne.choice+'-left').animate({
+        $('#'+game.playerTwo.choice).animate({left: '50%'}, 500);
+        $('#'+game.playerOne.choice).animate({
           right: '50%'
         }, 500, function() {
             setTimeout(function() {
               $(".black-bar").css('opacity', '0');
-              $('#'+game.playerTwo.choice+'-right').css('left', '100%');
-              $('#'+game.playerOne.choice+'-left').css('right', '100%');
+              $('#'+game.playerTwo.choice).css('left', '100%');
+              $('#'+game.playerOne.choice).css('right', '100%');
             }, 2000);
 
         });
@@ -313,7 +311,7 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
   });
 
 
-  // update database with player username & add Rock Paper Scissor choice
+  // update database with player username & pokemon choice
   $('.user-submit').on('click', function(){
     // return if full game or textfield is empty
     if ($('#username').val() === "" || !game.curPlayer) {
@@ -363,16 +361,6 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
       let $msg = $('<p>').text(snapshot.val().user+': '+snapshot.val().msg).addClass(msgClass);
       $('#chat-box').append($msg);
     }
-
-    $('#mySelect').prop('selectedIndex', -1);
-
-    // var selectMessage = new Firebase("https://mhamdani-rps.firebaseio.com/");
-    // selectMessage.onDisconnect().remove();
-    //
-    // selectMessage.on("value", function(snapshot){
-    //   var msgSelect = snapshot.val().user === game[game.curPlayer].name ? 'msg-player' : 'msg-opponent';
-    //   let $sMsg = $('<p>').text(snapshot.val().user+': '+snapshot.val(.msf))
-    // })
 
   // If any errors are experienced, log them to console.
   }, function (errorObject) {
