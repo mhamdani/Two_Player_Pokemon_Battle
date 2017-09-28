@@ -181,7 +181,7 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
       if (!snapshot.child("p1").exists() && !snapshot.child("p2").exists()) {
         console.log("Nobodies Home");
         if (!game.curPlayer) {
-          $('.info-well > p').html("Create your username Player 1!");
+          $('.info-well > p').html("");
           game.curPlayer = "playerOne";
           console.log("You are "+game.curPlayer);
           game.opponentDataKey = 'p2';
@@ -363,6 +363,17 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
       let $msg = $('<p>').text(snapshot.val().user+': '+snapshot.val().msg).addClass(msgClass);
       $('#chat-box').append($msg);
     }
+
+    $('#mySelect').prop('selectedIndex', -1);
+
+    // var selectMessage = new Firebase("https://mhamdani-rps.firebaseio.com/");
+    // selectMessage.onDisconnect().remove();
+    //
+    // selectMessage.on("value", function(snapshot){
+    //   var msgSelect = snapshot.val().user === game[game.curPlayer].name ? 'msg-player' : 'msg-opponent';
+    //   let $sMsg = $('<p>').text(snapshot.val().user+': '+snapshot.val(.msf))
+    // })
+
   // If any errors are experienced, log them to console.
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
