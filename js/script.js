@@ -342,7 +342,7 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
     var opponent = game.curPlayer === "playerOne" ? "playerTwo" : "playerOne";
     game[game.curPlayer].choice = choice;
     game.updatePlayerData(isPlayerOne, false , choice);
-    $('.'+game.curPlayer+'-panel').html($('<p>').addClass('rps-choice').text(choice));
+    $('.'+game.curPlayer+'-panel').html($('<img>').addClass('rps-choice').text(choice+'.gif').attr('src', 'assets/images/'+choice+'.gif').attr('height','100'));
     if (!game[opponent].choice) {
       $('.info-well > p').text('Waiting for opponent');
     }

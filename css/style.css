@@ -34,21 +34,11 @@
   min-height: 200px;
 }
 
-.rps {
+.rps,
+.rps-choice {
   margin: 33px 2%;
   font-size: 2em;
   z-index: 3;
-}
-.rps-choice {
-  font-size: 3em;
-  position: absolute;
-  height: 100px;
-  width: 200px;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
 }
 
 .msg-player {
