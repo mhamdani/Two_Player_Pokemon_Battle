@@ -61,7 +61,7 @@ $( document ).ready(function() {
       } else {
         $('.playerTwo-panel').html($choices);
       }
-      $('.info-well > p').html($('<p>').text('charmander, squirtle or pikachu?'));
+      $('.info-well > p').html($('<p>').text('Charmander (ROCK), Squirtle (PAPER) or Pikachu (SCISSOR)?'));
     },
     // Determine winner
     getWinner: function(isPlayerOne){
