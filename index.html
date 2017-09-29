@@ -54,22 +54,28 @@
                 Player 1:
                   <span>Waiting For Player</span>
                 </div>
+                <div class="panel-footer">
+                  <p>Player 1 Wins: <span id="p1-wins">0</span> Losses: <span id="p1-losses">0</span></p>
+                </div>
                 <div class="panel-body playerOne-panel"></div>
                 <div class="well info-well">
                   <p>Loading...</p>
                 </div>
-                <div class="panel-footer">
-                  <p>Player 1 Wins: <span id="p1-wins">0</span> Losses: <span id="p1-losses">0</span></p>
-                </div>
               </div>
             </div><!-- ./Player 1 panel -->
 
-            <!-- Status Well -->
-            <div class="col-md-4">
-              <div class="well info-well">
-                <p>Loading...</p>
-              </div>
-            </div><!-- ./Status Well -->
+            <div class="large-12 cell">
+              <div id="chat-box"></div>
+              <form class="input-group">
+                <input id="chat-input" type="text" class="form-control" placeholder="Or type some smack!">
+                <span class="input-group-btn">
+                <input id="chat-submit" class="btn btn-default" type="submit" value="Submit"></input>
+                </span>
+            </div>
+          </div>
+        </form>
+        </div>
+
             <!-- Player 2 Panel -->
             <div class="col-md-4">
               <div class="panel panel-default">
@@ -77,25 +83,13 @@
                 Player 2:
                   <span>Waiting For Player</span>
                 </div>
-                <div class="panel-body playerTwo-panel"></div>
                 <div class="panel-footer">
                   <p>Player 2 Wins: <span id="p2-wins">0</span> Losses: <span id="p2-losses">0</span></p>
                 </div>
+                <div class="panel-body playerTwo-panel"></div>
               </div>
             </div><!-- ./Player 2 Panel -->
 
-
-          <div class="large-12 cell">
-            <div id="chat-box"></div>
-            <form class="input-group">
-              <input id="chat-input" type="text" class="form-control" placeholder="Or type some smack!">
-              <span class="input-group-btn">
-              <input id="chat-submit" class="btn btn-default" type="submit" value="Submit"></input>
-              </span>
-          </div>
-        </div>
-      </form>
-      </div>
       <br><br><br>
             <!-- footer -->
             <div class="push"></div>
