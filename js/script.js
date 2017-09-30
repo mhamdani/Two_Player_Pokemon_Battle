@@ -49,11 +49,11 @@ $( document ).ready(function() {
     },
     // show pokemon options
     displayRps: function(isPlayerOne){
-      var $charmander = $('<img>').addClass('rps').text('charmander').attr('data-rps','charmander')
+      var $charmander = $('<img>').addClass('rps').text('Charmander (ROCK)').attr('data-rps','charmander').attr('data-name', 'Charmander (ROCK)')
         .attr('src','assets/images/charmander.gif').attr('height','100');
-      var $squirtle = $('<img>').addClass('rps').text('squirtle').attr('data-rps','squirtle')
+      var $squirtle = $('<img>').addClass('rps').text('Squirtle (PAPER)').attr('data-rps','squirtle').attr('data-name', 'Squirtle (PAPER)')
         .attr('src','assets/images/squirtle.gif').attr('height','100');
-      var $pikachu = $('<img>').addClass('rps').text('pikachu').attr('data-rps','pikachu')
+      var $pikachu = $('<img>').addClass('rps').text('Pikachu (SCISSORS)').attr('data-rps','pikachu').attr('data-name','Pikachu (SCISSORS)')
         .attr('src','assets/images/pikachu.gif').attr('height','100');
       var $choices = $('<div>').append($charmander,$squirtle,$pikachu);
       if (isPlayerOne) {
@@ -61,7 +61,7 @@ $( document ).ready(function() {
       } else {
         $('.playerTwo-panel').html($choices);
       }
-      $('.info-well > p').html($('<p>').text('Charmander (ROCK), Squirtle (PAPER) or Pikachu (SCISSOR)?'));
+      $('.info-well > p').html($('<p>').text('Charmander (ROCK), Squirtle (PAPER) or Pikachu (SCISSORS)?'));
     },
     // Determine winner
     getWinner: function(isPlayerOne){
@@ -70,7 +70,7 @@ $( document ).ready(function() {
       console.log('p1 choice', p1.choice);
       console.log('p2 choice', p2.choice);
       var playerOneWins;
-      // RPS logic
+      // Pokemon RPS logic
       if (p1.choice == 'charmander'){
             if (p2.choice == 'squirtle'){
                 playerOneWins = false;
@@ -122,8 +122,18 @@ $( document ).ready(function() {
         }
       }
       // reset choice & send player result to firebase & display opponent choice
+      // var choiceText = $(this).data('name');
       var opponent = this.curPlayer === "playerOne" ? "playerTwo" : "playerOne";
-      $('.'+opponent+'-panel').html($('<p>').addClass('rps-choice').text(this[opponent].choice));
+      $('.'+opponent+'-panel').html($('<p>').addClass('rps-choice').attr(this[opponent].choice));
+      if (this[opponent].choice == "charmander") {
+              $('.'+opponent+'-panel').html($('<p>').addClass('rps-choice').text('Your opponent chose Charmandar, (ROCK)'));
+            }
+              else if (this[opponent].choice == "squirtle") {
+                $('.'+opponent+'-panel').html($('<p>').addClass('rps-choice').text('Your opponent chose Squirtle, (PAPER)'));
+              }
+              else {
+                $('.'+opponent+'-panel').html($('<p>').addClass('rps-choice').text('Your opponent chose Pikachu, (SCISSORS)'));
+              }
       $(".black-bar").css("z-index","1");
       this.animateRPS();
       this.updatePlayerData(isPlayerOne, false, false);
@@ -137,7 +147,7 @@ $( document ).ready(function() {
         game.displayRps(isPlayerOne);
         var opponent = game.curPlayer === "playerOne" ? "playerTwo" : "playerOne";
         $('.'+opponent+'-panel').empty();
-      }, 5000);
+      }, 10000);
     },
     // animate pokemon
     animateRPS: function(){
@@ -177,7 +187,7 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
       game.isLoaded = true;
       // If there are no players current player is playerOne
       if (!snapshot.child("p1").exists() && !snapshot.child("p2").exists()) {
-        console.log("Nobodies Home");
+        console.log("Waiting for players");
         if (!game.curPlayer) {
           $('.info-well > p').html("");
           game.curPlayer = "playerOne";
@@ -334,15 +344,17 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
   })
 
 
-  // made RPS choice, update choice locally and on firebase
+  // made Pokemon choice, update choice locally and on firebase
   $(document).on('click','.rps', function(){
     console.log('Your choice: ',$(this).data('rps'));
     var choice = $(this).data('rps');
+    var choiceText = $(this).data('name');
+    console.log('Your choice: ',$(this).data('name'));
     var isPlayerOne = game.curPlayer === "playerOne" ? true : false;
     var opponent = game.curPlayer === "playerOne" ? "playerTwo" : "playerOne";
     game[game.curPlayer].choice = choice;
     game.updatePlayerData(isPlayerOne, false , choice);
-    $('.'+game.curPlayer+'-panel').html($('<img>').addClass('rps-choice').text(choice+'.gif').attr('src', 'assets/images/'+choice+'.gif').attr('height','100'));
+    $('.'+game.curPlayer+'-panel').html($('<img>').addClass('rps-choice').text(choice+'.gif').attr('src', 'assets/images/'+choice+'.gif').attr('height','100')).append(choiceText);
     if (!game[opponent].choice) {
       $('.info-well > p').text('Waiting for opponent');
     }
@@ -352,7 +364,7 @@ var gameData = new Firebase("https://mhamdani-rps.firebaseio.com/"
    // message database connection
   var messageData = new Firebase("https://mhamdani-rps.firebaseio.com/");
   messageData.onDisconnect().remove();
-  // listen for in new messages
+  // listen for new chat messages
   messageData.on("value", function(snapshot) {
 
     if (snapshot.child('msg').exists()) {

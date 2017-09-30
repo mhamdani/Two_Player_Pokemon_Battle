@@ -11,9 +11,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/images/pokeball_icon.png">
   </head>
+
   <body>
-
-
+    <!-- Animate Bar -->
+    <div class="black-bar"></div>
+    <img src="assets/images/charmander.gif" height="200" class="rps-animated rps-left" id="rock-left">
+    <img src="assets/images/squirtle.gif" height="200" class="rps-animated rps-left" id="paper-left">
+    <img src="assets/images/pikachu.gif" height="200" class="rps-animated rps-left" id="scissor-left">
+    <img src="assets/images/charmander.gif" height="200" class="rps-animated rps-right" id="rock-right">
+    <img src="assets/images/squirtle.gif" height="200" class="rps-animated rps-right" id="paper-right">
+    <img src="assets/images/pikachu.gif" height="200" class="rps-animated rps-right" id="scissor-right">
+    <div class="wrapper text-center"></div>
+<!-- Pokemon Game -->
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
@@ -35,7 +44,6 @@
         </div>
       </div>
 
-      <form>
           <div class="large-12 cell">
             <form class="form-inline" role="form">
               <div class="form-group">
@@ -44,7 +52,17 @@
                 <input class="user-submit" type="submit" value="Submit">
               </div>
             </form>
+          </div><br>
+
+          <div class="large-12 cell">
+            <div id="chat-box"></div>
+            <form class="input-group">
+              <input id="chat-input" type="text" class="form-control" placeholder="Talk some smack!">
+              <span class="input-group-btn">
+              <input id="chat-submit" class="btn btn-default" type="submit" value="Submit"></input>
+              </span>
           </div>
+      </form>
 
           <!-- Player 1 panel -->
           <div class="row top-buffer">
@@ -62,17 +80,9 @@
                   <p>Loading...</p>
                 </div>
               </div>
-            </div><!-- ./Player 1 panel -->
-
-            <div class="large-12 cell">
-              <div id="chat-box"></div>
-              <form class="input-group">
-                <input id="chat-input" type="text" class="form-control" placeholder="Or type some smack!">
-                <span class="input-group-btn">
-                <input id="chat-submit" class="btn btn-default" type="submit" value="Submit"></input>
-                </span>
             </div>
-        </form>
+            <!-- ./Player 1 panel -->
+
 
             <!-- Player 2 Panel -->
             <div class="col-md-4">
@@ -93,7 +103,6 @@
       <br><br><br>
             <!-- footer -->
             <div class="push"></div>
-          </div><!-- /.wrapper -->
           <div class="footer text-center">
             <span class="copyright">
               &copy Michelle Hamdani 2017
